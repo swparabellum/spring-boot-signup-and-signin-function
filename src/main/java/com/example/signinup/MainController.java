@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 
@@ -18,10 +19,13 @@ public class MainController {
 
 
     @GetMapping("/")
-    public String main(Model model,  Principal principal) {
+    public ModelAndView main(Model model,  Principal principal) {
+        ModelAndView mav = new ModelAndView();
         String email = principal.getName();
-        model.addAttribute("email", email);
-        return "main";
+        mav.addObject("email", email);
+        mav.setViewName("main");
+        //model.addAttribute("email", email);
+        return mav;
     }
 
 
