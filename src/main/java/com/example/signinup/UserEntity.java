@@ -9,7 +9,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -17,9 +16,10 @@ import java.util.List;
 @Data
 @Entity
 @Builder
+@Table(name="user")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements UserDetails {
+public class UserEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

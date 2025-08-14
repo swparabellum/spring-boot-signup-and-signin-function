@@ -7,8 +7,23 @@
 </head>
 <body>
     <div layout:fragment="content">
-        <h2>Welcome to the Main Page</h2>
-        <p>This is the main content area.</p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>email</th>
+                    <th>name</th>
+                    <th>createdAt</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${items}">
+                    <td th:text="${item.email}"></td>
+                    <td th:text="${item.name}"></td>
+                    <td th:text="${item.createdAt}"></td>
+                    <td><button class="btn btn-danger">삭제</button></td>
+                </tr>
+            </tbody>
     </div>
 </body>
 </html>

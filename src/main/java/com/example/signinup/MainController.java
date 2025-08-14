@@ -19,12 +19,12 @@ public class MainController {
 
 
     @GetMapping("/")
-    public ModelAndView main(Model model,  Principal principal) {
+    public ModelAndView main(Model model, Principal principal) {
         ModelAndView mav = new ModelAndView();
         String email = principal.getName();
+        mav.addObject("items",userRepository.findAll());
         mav.addObject("email", email);
         mav.setViewName("main");
-        //model.addAttribute("email", email);
         return mav;
     }
 

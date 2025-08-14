@@ -16,8 +16,8 @@ public class SignupRequestDto {
 
     private LocalDateTime createdAt;
 
-    public User toUser(PasswordEncoder passwordEncoder) {
-        return new User.UserBuilder()
+    public UserEntity toUser(PasswordEncoder passwordEncoder) {
+        return new UserEntity.UserEntityBuilder()
                 .email(email)
                 .name(name)
                 .password(passwordEncoder.encode(password))
