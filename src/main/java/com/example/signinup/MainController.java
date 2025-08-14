@@ -16,16 +16,12 @@ public class MainController {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final MainService mainService;
 
 
     @GetMapping("/")
     public ModelAndView main(Model model, Principal principal) {
-        ModelAndView mav = new ModelAndView();
-        String email = principal.getName();
-        mav.addObject("items",userRepository.findAll());
-        mav.addObject("email", email);
-        mav.setViewName("main");
-        return mav;
+        return mainService.main(model,principal);
     }
 
 
