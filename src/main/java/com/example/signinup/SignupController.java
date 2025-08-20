@@ -12,8 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 @AllArgsConstructor
 public class SignupController {
 
-    private UserService userService;
-
     private SignupService signupService;
 
     @GetMapping("/signup")
