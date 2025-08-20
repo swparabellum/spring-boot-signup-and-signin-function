@@ -19,15 +19,17 @@
             </thead>
             <tbody>
                 <tr th:each="item : ${items}">
-                    <td th:text="${item.email}"></td>
-                    <td th:text="${item.name}"></td>
-                    <td th:text="${item.createdAt}"></td>
-                    <td>
-                        <button 
-                            class="btn btn-danger delete-btn" 
-                            th:data-email="${item.email}"
-                        >삭제</button>
-                    </td>
+                    <th:block th:if="${item.isUse == true}">
+                        <td th:text="${item.email}"></td>
+                        <td th:text="${item.name}"></td>
+                        <td th:text="${item.createdAt}"></td>
+                        <td>
+                            <button
+                                    class="btn btn-danger delete-btn"
+                                    th:data-email="${item.email}"
+                            >삭제</button>
+                        </td>
+                    </th:block>
                 </tr>
             </tbody>
         </table>

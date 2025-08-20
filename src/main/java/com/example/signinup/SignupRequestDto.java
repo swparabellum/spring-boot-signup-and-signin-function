@@ -14,12 +14,15 @@ public class SignupRequestDto {
 
     private String password;
 
+    private boolean isUse;
+
     private LocalDateTime createdAt;
 
     public UserEntity toUser(PasswordEncoder passwordEncoder) {
         return new UserEntity.UserEntityBuilder()
                 .email(email)
                 .name(name)
+                .isUse(isUse)
                 .password(passwordEncoder.encode(password))
                 .build();
     }
