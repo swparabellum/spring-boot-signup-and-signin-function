@@ -34,26 +34,7 @@ public class MainController {
     @ResponseBody
     @Transactional
     public ResponseEntity<String> deleteUser(@PathVariable String email, Principal principal) {
-        System.out.println("delete user: "+email);
-        if(Objects.equals(email, principal.getName())){
-            System.out.println("you can't delete yourself... failed to delete user: "+principal.getName());
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("you can't delete yourself");
-        }
+        return mainService.deleteUser(email,principal);
 
-        try {
-            UserEntity entity = userRepository.findByEmail(email)
-                            .orElseThrow(() -> new UsernameNotFoundException("user not found"));
-            entity.setUse(false);
-            System.out.println("Userentity status : "+entity);
-            userRepository.save(entity);
-
-            System.out.println("try delete user: "+email);
-            return ResponseEntity.ok("User deleted successfully");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("failed to delete user: "+email);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error deleting user");
-        }
     }
 }
