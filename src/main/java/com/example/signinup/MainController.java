@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.util.Objects;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -39,7 +41,12 @@ public class MainController {
         }
 
         try {
-            userRepository.deleteByEmail(email);
+            UserEntity entity = userRepository.findByEmail(email)
+                            .orElseThrow(() -> new UsernameNotFoundException("user not found"));
+            entity.setUse(false);
+            System.out.println("Userentity status : "+entity);
+            userRepository.save(entity);
+
             System.out.println("try delete user: "+email);
             return ResponseEntity.ok("User deleted successfully");
         } catch (Exception e) {

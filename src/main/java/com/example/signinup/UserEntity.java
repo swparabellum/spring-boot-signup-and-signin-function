@@ -1,10 +1,7 @@
 package com.example.signinup;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +13,8 @@ import java.util.List;
 @Data
 @Entity
 @Builder
+@Setter
+@Getter
 @Table(name="user")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,6 +30,8 @@ public class UserEntity implements UserDetails {
     private String name;
 
     private String password;
+
+    private boolean isUse;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
