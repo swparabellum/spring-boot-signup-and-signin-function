@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
       layout:decorate="~{default}">
 <head>
     <title>Main Page</title>
@@ -24,7 +25,7 @@
                         <td th:text="${item.name}"></td>
                         <td th:text="${item.createdAt}"></td>
                         <td>
-                            <button
+                            <button th:if="${!#strings.equals(item.email, #authentication.name)}"
                                     class="btn btn-danger delete-btn"
                                     th:data-email="${item.email}"
                             >삭제</button>
