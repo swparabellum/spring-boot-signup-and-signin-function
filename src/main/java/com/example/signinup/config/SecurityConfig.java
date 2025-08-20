@@ -1,5 +1,6 @@
 package com.example.signinup.config;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -21,16 +22,27 @@ public class SecurityConfig {
                         .requestMatchers("/signup").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
                         .requestMatchers("/webjars/**").permitAll()
-                        .anyRequest().authenticated()
-                )
+                        .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults());
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .permitAll())
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login")
+                        .addLogoutHandler((request, response, authentication) -> {
+                            HttpSession session = request.getSession();
+                            session.invalidate();
+                        })
+                        .logoutSuccessHandler((request, response, authentication) -> response.sendRedirect("/login"))
+                        .deleteCookies("JSESSIONID")
+                        .permitAll());
 
         return http.build();
     }
 
     @Bean
-    public PasswordEncoder encoder(){
+    public PasswordEncoder encoder() {
         return Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
 

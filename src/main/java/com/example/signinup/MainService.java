@@ -28,6 +28,12 @@ public class MainService {
         return mav;
     }
 
+    public ModelAndView login() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("login");
+        return mav;
+    }
+
     public ResponseEntity<String> deleteUser(String email, Principal principal){
         System.out.println("delete user: "+email);
         if(Objects.equals(email, principal.getName())){
@@ -50,5 +56,6 @@ public class MainService {
                     .body("Error deleting user");
         }
     }
+
 
 }

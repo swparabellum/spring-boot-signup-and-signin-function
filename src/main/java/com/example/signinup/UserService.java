@@ -12,11 +12,6 @@ import org.springframework.stereotype.Service;
 public class UserService implements UserDetailsService {
 
     private UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
-
-    public void processSignup(SignupRequestDto signupRequestDto) {
-        userRepository.save(signupRequestDto.toUser(passwordEncoder));
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

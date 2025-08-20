@@ -30,6 +30,11 @@ public class MainController {
         return mainService.main(model,principal);
     }
 
+    @GetMapping("/login")
+    public ModelAndView login(){
+        return mainService.login();
+    }
+
     @DeleteMapping("/api/users/{email}")
     @ResponseBody
     @Transactional
