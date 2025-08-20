@@ -3,10 +3,13 @@
         <div sec:authorize="isAuthenticated()">
             <div class="row">
                 <div class="col">
-                    welcome "[[${email}]]"
+                    <div sec:authentication="name"></div>
                 </div>
                 <div class="col">
-                    <a class="btn btn-primary" href="/logout" role="button">log out</a>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <button type="submit" class="btn btn-primary">로그아웃</button>
+                    </form>
                 </div>
             </div>
         </div>
