@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{default}">
+
 <head>
     <title>Sign up</title>
 </head>
+
 <body>
-<h1>Sign up</h1>
-<form method="POST" th:action="@{/signup}" id="signupForm">
-    <label for="email">Email: </label>
-    <input id="email" type="email" name="email" /><br />
+    <div layout:fragment="content">
+        <h1>Sign up</h1>
+        <form method="POST" th:action="@{/signup}" id="signupForm">
+            <label for="email">Email: </label>
+            <input id="email" type="email" name="email" /><br />
 
-    <label for="username">Password: </label>
-    <input id="username" type="password" name="password" /><br />
+            <label for="username">Password: </label>
+            <input id="username" type="password" name="password" /><br />
 
-    <label for="name">Name: </label>
-    <input id="name" type="text" name="name" /><br />
+            <label for="name">Name: </label>
+            <input id="name" type="text" name="name" /><br />
 
-    <input type="submit" value="Register" />
-</form>
+            <input type="submit" value="Register" />
+        </form>
+    </div>
 </body>
+
 </html>
