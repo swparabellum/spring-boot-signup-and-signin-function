@@ -4,25 +4,28 @@
     layout:decorate="~{default}">
 
 <head>
+    <link rel="stylesheet" th:href="@{/css/login/login.css}" />
     <title>Please Log In</title>
 </head>
 
 <body>
-    <div layout:fragment="content">
-        <div sec:authorize="isAnonymous()">
+    <div class="container d-flex justify-content-center" layout:fragment="content">
+        <div class="loginInput border rounded p-1" sec:authorize="isAnonymous()">
             <h1>Please Log In</h1>
-            <div th:if="${param.error}">
+            <div th:if="${param.error}" class="alert alert-danger">
                 Invalid username and password.</div>
-            <div th:if="${param.logout}">
+            <div th:if="${param.logout}" class="alert alert-info">
                 You have been logged out.</div>
             <form th:action="@{/login}" method="post">
-                <div>
-                    <input type="text" name="username" placeholder="Username" />
+                <div class="input-group mb-3">
+                    <span class="input-group-text w-25">email</span>
+                    <input type="text" name="username" class=" form-control"  placeholder="Username" />
                 </div>
-                <div>
-                    <input type="password" name="password" placeholder="Password" />
+                <div class="input-group mb-3">
+                    <span class="input-group-text w-25">password</span>
+                    <input type="password" name="password" class=" form-control" placeholder="Password" />
                 </div>
-                <input type="submit" value="Log in" />
+                <input class="btn btn-primary" type="submit" value="로그인" />
             </form>
         </div>
         <div sec:authorize="isAuthenticated()">

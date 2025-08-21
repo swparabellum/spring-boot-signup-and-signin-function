@@ -1,39 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
-      layout:decorate="~{default}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security6" layout:decorate="~{default}">
+
 <head>
     <title>Main Page</title>
     <script src="js/main/main.js"></script>
 </head>
+
 <body>
     <div layout:fragment="content">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>email</th>
-                    <th>name</th>
-                    <th>createdAt</th>
-                    <th>action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="item : ${items}">
-                    <th:block th:if="${item.isUse == true}">
-                        <td th:text="${item.email}"></td>
-                        <td th:text="${item.name}"></td>
-                        <td th:text="${item.createdAt}"></td>
-                        <td>
-                            <button th:if="${!#strings.equals(item.email, #authentication.name)}"
-                                    class="btn btn-danger delete-btn"
-                                    th:data-email="${item.email}"
-                            >삭제</button>
-                        </td>
-                    </th:block>
-                </tr>
-            </tbody>
-        </table>
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>email</th>
+                        <th>name</th>
+                        <th>createdAt</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${items}">
+                        <th:block th:if="${item.isUse == true}">
+                            <td th:text="${item.email}"></td>
+                            <td th:text="${item.name}"></td>
+                            <td th:text="${item.createdAt}"></td>
+                            <td>
+                                <button th:if="${!#strings.equals(item.email, #authentication.name)}"
+                                    class="btn btn-danger delete-btn" th:data-email="${item.email}">삭제</button>
+                            </td>
+                        </th:block>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </body>
+
 </html>

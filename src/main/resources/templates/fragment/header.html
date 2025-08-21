@@ -1,5 +1,5 @@
 <header th:fragment="header" class="shadow-sm" xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
-    <div class="container text-center">
+    <div class="container text-center mb-3">
         <div sec:authorize="isAuthenticated()">
             <div class="row">
                 <div class="col">
@@ -16,10 +16,11 @@
         <div sec:authorize="isAnonymous()">
             <div class="row">
                 <div class="col">
-                    로그인이 안된상태를 여기에 표시.
+                    로그인을 해주세요.
                 </div>
                 <div class="col">
-                    로그인하세요 버튼을 여기 넣기.
+                    <a class="btn btn-primary" href="/login">로그인</a>
+                    <a class="btn btn-primary" href="/signup">회원가입</a>
                 </div>
             </div>
         </div>
