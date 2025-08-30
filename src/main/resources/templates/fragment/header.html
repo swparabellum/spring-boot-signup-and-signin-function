@@ -6,6 +6,13 @@
                     <div sec:authentication="name"></div>
                 </div>
                 <div class="col">
+
+                    <a class="btn btn-primary" href="/newPost">게시글작성(추후 깔끔하게 다듬을것)</a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-primary" href="/accountManage">계정관리(추후 깔끔하게 다듬을것)</a>
+                </div>
+                <div class="col">
                     <form th:action="@{/logout}" method="post">
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                         <button type="submit" class="btn btn-primary">로그아웃</button>
