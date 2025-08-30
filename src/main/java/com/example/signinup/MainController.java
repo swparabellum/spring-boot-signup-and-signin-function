@@ -35,6 +35,11 @@ public class MainController {
         return mainService.login();
     }
 
+    @GetMapping("/accountManage")
+    public ModelAndView accountManage(Model model, Principal principal){
+        return mainService.getAccountList(model,principal);
+    }
+
     @DeleteMapping("/api/users/{email}")
     @ResponseBody
     @Transactional
