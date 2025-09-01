@@ -1,0 +1,80 @@
+/* 기본 스타일 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+    margin: 0;
+}
+
+.calendar-container {
+    width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* 헤더 */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #555;
+    padding: 0 10px;
+}
+
+/* 요일 및 날짜 그리드 */
+.calendar-weekdays, .calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+}
+
+.calendar-weekdays div {
+    font-weight: 600;
+    padding: 10px 0;
+    color: #888;
+}
+
+.calendar-dates div {
+    padding: 15px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 50%;
+}
+
+/* 날짜 스타일 */
+.calendar-dates div:hover {
+    background-color: #e9e9e9;
+}
+
+/* 이전/다음 달 날짜 */
+.other-month {
+    color: #ccc;
+}
+
+/* 오늘 날짜 */
+.current-day {
+    background-color: #007bff;
+    color: #fff;
+}
+.current-day:hover {
+    background-color: #0056b3;
+}
