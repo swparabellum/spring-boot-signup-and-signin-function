@@ -16,31 +16,16 @@ import java.security.Principal;
 @AllArgsConstructor
 public class PostController {
 
-    BoardRepository boardRepository;
-    private final UserRepository userRepository;
+    PostService postService;
 
     @GetMapping("/newPost")
     public ModelAndView newPost() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("newPost");
-        return mav;
+        return postService.newPost();
     }
 
     @PostMapping("/newPost")
     public String makeNewPost(@RequestParam String title, @RequestParam String content, Principal principal) {
-
-        String userEmail = principal.getName();
-        UserEntity user = userRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + userEmail));
-        BoardEntity board = BoardEntity.builder()
-                .title(title)
-                .content(content)
-                .user(user) // UserEntity 설정
-                .isUse(true)
-                .build();
-        boardRepository.save(board);
-
-        return "redirect:/";
+        return postService.makeNewPost(title,content,principal);
     }
 
 }
