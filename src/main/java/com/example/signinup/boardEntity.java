@@ -35,6 +35,7 @@ public class BoardEntity {
     @Column(nullable = false)
     private String title;
 
+    @Lob
     private String content;
 
     private boolean isUse;

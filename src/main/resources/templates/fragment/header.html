@@ -6,11 +6,16 @@
                     <div sec:authentication="name"></div>
                 </div>
                 <div class="col">
-
-                    <a class="btn btn-primary" href="/newPost">게시글작성(추후 깔끔하게 다듬을것)</a>
+                    <a class="btn btn-primary" href="/">메인페이지</a>
                 </div>
                 <div class="col">
-                    <a class="btn btn-primary" href="/accountManage">계정관리(추후 깔끔하게 다듬을것)</a>
+                    <a class="btn btn-primary" href="/board">게시글목록</a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-primary" href="/newPost">게시글작성</a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-primary" href="/accountManage">계정관리</a>
                 </div>
                 <div class="col">
                     <form th:action="@{/logout}" method="post">
