@@ -36,4 +36,20 @@ public class PostService {
         return "redirect:/";
     }
 
+    public ModelAndView postList(){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("posts", boardRepository.findAll());
+        mav.setViewName("PostList");
+        return mav;
+    }
+
+    public ModelAndView getPostDetail(Long id){
+        ModelAndView mav = new ModelAndView();
+        BoardEntity post = boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid post Id:" + id));
+        mav.addObject("post", post);
+        mav.setViewName("PostDetail");
+        return mav;
+    }
+
 }
