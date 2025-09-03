@@ -3,25 +3,32 @@
     layout:decorate="~{default}">
 
 <head>
+    <link rel="stylesheet" th:href="@{/css/signup/signup.css}" />
     <title>Sign up</title>
 </head>
 
 <body>
-    <div layout:fragment="content">
-        <h1>Sign up</h1>
-        <form method="POST" th:action="@{/signup}" id="signupForm">
-            <label for="email">Email: </label>
-            <input id="email" type="email" name="email" /><br />
+<div class="container d-flex justify-content-center" layout:fragment="content">
+        <div class="signupInput border rounded rounded p-1">
+            <h1>Sign up</h1>
+            <form method="POST" th:action="@{/signup}" id="signupForm">
+                <div class="input-group mb-3">
+                    <span class="input-group-text w-25">Email: </span>
+                    <input id="email" type="email" class=" form-control" name="email" />
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text w-25">Password: </span>
+                    <input id="username" type="password" class=" form-control" name="password" />
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text w-25">Name: </span>
+                    <input id="name" type="text" class=" form-control" name="name" />
+                </div>
+                <input class="btn btn-primary" type="submit" value="등록" />
+            </form>
+        </div>
+</div>
 
-            <label for="username">Password: </label>
-            <input id="username" type="password" name="password" /><br />
-
-            <label for="name">Name: </label>
-            <input id="name" type="text" name="name" /><br />
-
-            <input type="submit" value="Register" />
-        </form>
-    </div>
 </body>
 
 </html>

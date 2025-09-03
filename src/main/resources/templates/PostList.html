@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6" layout:decorate="~{default}">
+
+<head>
+  <title>Main Page</title>
+  <script src="js/accountManage/accountManage.js"></script>
+</head>
+
+<body>
+<div layout:fragment="content">
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>POST ID</th>
+        <th>user</th>
+        <th>title</th>
+        <th>createdAt</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- 수정된 코드 -->
+      <tr th:each="post : ${posts}" th:onclick="|location.href='@{/board/post/{id}(id=${post.boardId})}'|" style="cursor: pointer">
+        <th:block th:if="${post.isUse == true}" >
+          <td th:text="${post.boardId}"></td>
+          <td th:text="${post.user.email}"></td>
+          <td th:text="${post.title}"></td>
+          <td th:text="${post.createdAt}"></td>
+        </th:block>
+      </tr>
+      </tbody>
+    </table>
+    <a class="btn btn-primary" href="/newPost">게시글작성</a>
+  </div>
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6" layout:decorate="~{default}">
+
+<head>
+  <title th:text="${post.title}">PostDetail</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+  <div class="container">
+
+    <div>
+        <span>
+            <strong>POST ID:</strong> <span th:text="${post.boardId}"></span>
+        </span>
+        <span>
+            <strong>user:</strong> <span th:text="${post.user.email}"></span>
+        </span>
+    </div>
+    <div>
+        <h2 th:text="${post.title}"></h2>
+        <p th:text="${post.content}"></p>
+    </div>
+
+</div>
+</body>
+
+</html>

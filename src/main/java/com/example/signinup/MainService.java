@@ -19,12 +19,18 @@ public class MainService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public ModelAndView main(Model model, Principal principal){
+    public ModelAndView main(Model model, Principal principal) {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("main");
+        return mav;
+    }
+
+    public ModelAndView getAccountList(Model model, Principal principal){
         ModelAndView mav = new ModelAndView();
         String email = principal.getName();
         mav.addObject("items",userRepository.findAll());
         mav.addObject("email", email);
-        mav.setViewName("main");
+        mav.setViewName("accountManage");
         return mav;
     }
 
