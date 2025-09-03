@@ -1,14 +1,13 @@
 package com.example.signinup;
 
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
@@ -39,4 +38,10 @@ public class PostController {
         return postService.getPostDetail(id);
     }
 
+    @DeleteMapping("/board/post/{id}")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<String> deletePost(@PathVariable Long id, Principal principal) {
+        return postService.deletePost(id,principal);
+    }
 }

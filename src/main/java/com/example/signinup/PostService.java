@@ -1,6 +1,7 @@
 package com.example.signinup;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -52,4 +53,11 @@ public class PostService {
         return mav;
     }
 
+    public ResponseEntity<String> deletePost(Long id, Principal principal) {
+        BoardEntity boardEntity = boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid post Id:" + id));
+        boardEntity.setUse(false);
+        boardRepository.save(boardEntity);
+        return ResponseEntity.ok("post deleted Successfully");
+    }
 }
