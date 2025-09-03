@@ -7,16 +7,18 @@
 </head>
 
 <body>
-<div layout:fragment="content">
+<div layout:fragment="content" class="container">
   <h1>new Post</h1>
   <form method="POST" th:action="@{/newPost}" id="newPostForm">
-    <label for="title">title </label>
-    <input id="title" name="title" /><br />
-
-    <label for="content"> </label>
-    <textarea class="form-control" id="content" name="content" rows="5"></textarea>
-
-    <input type="submit" value="newPost" />
+    <div class="form-group">
+      <label for="title">title </label>
+      <input id="title" name="title" class="form-control" />
+    </div>
+    <div class="form-group mb-3">
+      <label for="content"> </label>
+      <textarea class="form-control" id="content" name="content" rows="5"></textarea>
+    </div>
+    <input class="btn btn-primary" type="submit" value="newPost" />
   </form>
 </div>
 </body>
