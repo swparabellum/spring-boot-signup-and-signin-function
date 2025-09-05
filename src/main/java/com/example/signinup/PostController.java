@@ -33,6 +33,17 @@ public class PostController {
         return postService.makeNewPost(title,content,principal);
     }
 
+    @GetMapping("/EditPost")
+    public ModelAndView editPostPage(@RequestParam Long id) {
+        return postService.editPostPage(id);
+    }
+
+    @Transactional
+    @PostMapping("/EditPost")
+    public String editPost(@RequestParam Long id, @RequestParam String title, @RequestParam String content) {
+        return postService.editPost(id, title,content);
+    }
+
     @GetMapping("/board/post/{id}")
     public ModelAndView getPostDetail(@PathVariable Long id) {
         return postService.getPostDetail(id);
