@@ -4,6 +4,7 @@
 
 <head>
   <title th:text="${post.title}">PostDetail</title>
+    <script src="/js/postDetail/postDetail.js"></script>
 </head>
 
 <body>
@@ -22,6 +23,10 @@
         <h2 th:text="${post.title}"></h2>
         <p th:text="${post.content}"></p>
     </div>
+      <div  th:if="${#strings.equals(post.user.email, #authentication.name)}">
+          <button class="btn btn-danger delete-btn" th:boardId="${post.boardId}">글삭제</button>
+          <a class="btn btn-primary" th:href="@{/EditPost(id=${post.boardId})}">수정</a>
+      </div>
 
 </div>
 </body>
