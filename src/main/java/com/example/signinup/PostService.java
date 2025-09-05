@@ -1,6 +1,7 @@
 package com.example.signinup;
 
 import lombok.AllArgsConstructor;
+import org.aspectj.bridge.Message;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,11 @@ public class PostService {
         ModelAndView mav = new ModelAndView();
         BoardEntity post = boardRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid post Id:" + id));
+        if(post.isUse() == false){
+            mav.setViewName("postNotFound");
+            mav.addObject("message", "삭제된 게시글입니다.");
+            return mav;
+        }
         mav.addObject("post", post);
         mav.setViewName("PostDetail");
         return mav;
